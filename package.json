@@ -1,0 +1,25 @@
+{
+  "name": "claude-agent-runner-openclaw-plugin",
+  "version": "0.1.0",
+  "private": true,
+  "description": "OpenClaw plugin that delegates focused coding sub-tasks to a spawned Claude Code (`claude -p`) sub-process, keeping each OpenClaw conversation aligned with one Claude session.",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "clean": "rm -rf dist"
+  },
+  "openclaw": {
+    "extensions": [
+      "./dist/index.js"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

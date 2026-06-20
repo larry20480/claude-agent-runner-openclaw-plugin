@@ -1,0 +1,33 @@
+{
+  "id": "claude-agent-runner",
+  "name": "Claude Agent Runner",
+  "description": "Delegate focused coding sub-tasks to a Claude Code sub-process (`claude -p`). One spawned Claude session is mapped to each OpenClaw conversation key and resumed on subsequent delegations.",
+  "activation": {
+    "onStartup": false
+  },
+  "enabledByDefault": true,
+  "contracts": {
+    "tools": [
+      "claude_agent_delegate"
+    ]
+  },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "claudeBin": {
+        "type": "string",
+        "description": "Override path/name of the `claude` CLI. Defaults to `claude` on PATH."
+      },
+      "transcriptDir": {
+        "type": "string",
+        "description": "Directory for NDJSON transcripts. Defaults to `${HOME}/.openclaw/logs/claude-agent-runner`."
+      },
+      "extraArgs": {
+        "type": "array",
+        "items": { "type": "string" },
+        "description": "Extra args appended to every `claude -p` invocation (e.g. `--allowedTools`)."
+      }
+    }
+  }
+}
